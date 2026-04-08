@@ -1,21 +1,26 @@
 <?php
 if (isset($_POST['submitbtn'])) {
 
-    $fileSize = $_FILES['f']['size']; // size in bytes
+    if ($_FILES['f']['name'] != "") {
 
-    // byte থেকে KB করা
-    $fileSizeKB = $fileSize / 1024;
+        $fileSize = $_FILES['f']['size'];
 
-    echo "File size: " . $fileSizeKB . " KB<br>";
+        $fileSizeKB = $fileSize / 1024;
 
-    // 500KB validation
-    if ($fileSizeKB <= 500) {
-        echo "File size OK (within 500KB)";
+        echo "File size: " . $fileSizeKB . " KB<br>";
+
+        if ($fileSizeKB <= 500) {
+            echo "File size OK (within 500KB)";
+        } else {
+            echo "File too large! Max 500KB allowed";
+        }
+
     } else {
-        echo "File too large! Max 500KB allowed";
+        echo "Please select a file!";
     }
 }
 ?>
+
 <form method="post" enctype="multipart/form-data">
     <input type="file" name="f"><br><br>
     <input type="submit" name="submitbtn" value="Upload">

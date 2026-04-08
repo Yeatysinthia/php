@@ -1,26 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
 <?php
 if (isset($_POST['submitbtn'])) {
+
     $fileName = $_FILES['f']['name'];
     $tmp = $_FILES['f']['tmp_name'];
-    $s = "img/";
-    move_uploaded_file("$tmp", "$s.$fileName");
-    echo "Image uploaded!";
 
+    $path = "img/" . $fileName;
+
+    move_uploaded_file($tmp, $path);
+
+    $fileSize = $_FILES['f']['size'];
+    $fileSizeKB = $fileSize / 1024;
+
+    echo "File size: " . $fileSizeKB . " KB<br>";
+
+    if ($fileSizeKB <= 500) {
+        echo "File size OK (within 500KB)<br>";
+    } else {
+        echo "File too large! Max 500KB allowed<br>";
+    }
+
+    // ✅ image show
+    echo "<img src='$path' width='400px'>";
 }
 ?>
-<body>
-    <form method="post" enctype="multipart/form-data">
-    Select Image:
+
+<form method="post" enctype="multipart/form-data">
     <input type="file" name="f"><br><br>
-    
     <input type="submit" name="submitbtn" value="Upload">
 </form>
-</body>
-</html>
