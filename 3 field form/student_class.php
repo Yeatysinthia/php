@@ -1,10 +1,10 @@
 <?php
 class Student
 {
-  protected $id;
+  public $id;
   public $name;
 
-  protected static $file_path = "data.txt";
+  public static $file_path = "data.txt";
 
   function __construct($_id, $_name)
   {
@@ -32,12 +32,12 @@ class Student
 
     echo "<b>ID | Name | Address</b><br/>";
 
-    foreach ($students as $d) {
-      $data = explode(",", trim($d));
+    foreach ($students as $line) {
+      $data = explode(",", trim($line));
 
       $id = $data[0];
       $name = $data[1];
-      $address = $data[2];
+      $address = $data[2]; //data theke info niye var e rakhe
 
       echo "$id | $name | $address<br/>";
     }

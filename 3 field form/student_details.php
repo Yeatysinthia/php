@@ -11,10 +11,10 @@ class StudentDetails extends Student
   function __construct($_id, $_name, $_address)
   {
     parent::__construct($_id, $_name);
-    $this->address = $_address;
+    $this->address = $_address; //address store
   }
 
-  public function csv()
+  public function csv() //parent class csv override kore
   {
     return $this->id . "," . $this->name . "," . $this->address;
   }

@@ -5,9 +5,9 @@ if (isset($_POST["btnSubmit"])) {
 
   $id = $_POST["txtId"];
   $name = $_POST["txtName"];
-  $address = $_POST["txtAddress"];
+  $address = $_POST["txtAddress"]; //input field name
 
-  if ($id != "" && $name != "" && $address != "") {
+  if ($id != "" && $name != "" && $address != "") { //input empty ki na check
 
     $student = new StudentDetails($id, $name, $address);
     $student->store();
@@ -129,4 +129,3 @@ if (isset($_POST["btnSubmit"])) {
 
 </body>
 </html>
-
