@@ -19,7 +19,7 @@ if (isset($_POST['submitbtn'])) {
         echo "File too large! Max 500KB allowed<br>";
     }
 
-    // ✅ image show
+    //  image show
     echo "<img src='$path' width='400px'>";
 }
 ?>
