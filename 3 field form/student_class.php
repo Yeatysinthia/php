@@ -37,7 +37,7 @@ class Student
 
       $id = $data[0];
       $name = $data[1];
-      $address = $data[2]; //data theke info niye var e rakhe
+      $address = $data[2]; 
 
       echo "$id | $name | $address<br/>";
     }

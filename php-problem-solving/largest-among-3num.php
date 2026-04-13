@@ -1,5 +1,5 @@
 <?php 
-// Function to find the largest number among three numbers
+
 function findLargestNumber($a, $b, $c) {
     $largest = null;
 
@@ -15,17 +15,17 @@ function findLargestNumber($a, $b, $c) {
         $largest = $c;
     }
 
-    return $largest; // Return the largest number
+    return $largest; 
 }
 
-// Input numbers
+
 $a = 67;
 $b = 206;
 $c = 150;
 
-// Call the function to find the largest number
+
 $result = findLargestNumber($a, $b, $c);
 
-// Display the result
+
 echo "The largest number among $a, $b, and $c is: $result";
 ?>

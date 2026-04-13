@@ -5,15 +5,23 @@ if (isset($_POST["btnSubmit"])) {
 
   $id = $_POST["txtId"];
   $name = $_POST["txtName"];
-  $address = $_POST["txtAddress"]; 
+  $batch = $_POST["txtBatch"];
 
-  if ($id != "" && $name != "" && $address != "") { 
+  if ($id != "" && $name != "" && $batch != "") {
 
-    $student = new StudentDetails($id, $name, $address);
+    $student = new StudentDetails($id, $name, $batch);
     $student->store();
+
+    echo "Data Saved Successfully!";
   } else {
-    $message = "All fields are required!";
+    echo "All fields are required!";
   }
+}
+
+
+if (isset($_POST["btnSearch"])) {
+  $searchId = $_POST["searchId"];
+  Student::searchById($searchId);
 }
 ?>
 
@@ -98,35 +106,33 @@ if (isset($_POST["btnSubmit"])) {
 <div class="container">
   <h2>Student Form</h2>
 
-  <form action="#" method="post">
+  <form method="post">
 
-    <div class="form-group">
-      <label>ID</label>
-      <input type="text" name="txtId" required>
-    </div>
+  <h3>Add Student</h3>
 
-    <div class="form-group">
-      <label>Name</label>
-      <input type="text" name="txtName" required>
-    </div>
+  <input type="text" name="txtId" placeholder="ID"><br><br>
+  <input type="text" name="txtName" placeholder="Name"><br><br>
+  <input type="text" name="txtBatch" placeholder="Batch"><br><br>
 
-    <div class="form-group">
-      <label>Address</label>
-      <input type="text" name="txtAddress" required>
-    </div>
+  <input type="submit" name="btnSubmit" value="Save"><br><br>
 
-    <input type="submit" name="btnSubmit" value="Submit" class="btn">
+  <hr>
 
-  </form>
+  <h3>Search Student by ID</h3>
 
-  <div class="table">
-    <?php
-    Student::display_students();
-    ?>
+  <input type="text" name="searchId" placeholder="Enter ID"><br><br>
+  <input type="submit" name="btnSearch" value="Search">
+
+</form>
+
+<hr>
+
+<?php
+Student::display_students();
+?>
   </div>
 
 </div>
 
 </body>
 </html>
-

@@ -1,9 +1,7 @@
 <?php
-// Function to determine the grade based on the score
 function getGrade($score) {
-    $grade = ""; // Initialize the grade variable
+    $grade = "";
 
-    // Use conditional statements to determine the grade
     if ($score >= 90) {
         $grade = "A";
     } elseif ($score >= 80) {
@@ -16,15 +14,35 @@ function getGrade($score) {
         $grade = "F";
     }
 
-    return $grade; // Return the grade
+    return $grade; 
 }
 
-// Input score
-$score = 90;
+$result = "";
 
-// Call the function to determine the grade
-$result = getGrade($score);
-
-// Display the result
-echo "The grade for a score of $score is: $result";
+if (isset($_POST['score'])) {
+    $score = $_POST['score'];
+    $result = getGrade($score);
+}
 ?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Grade Calculator</title>
+</head>
+<body>
+
+<form method="post">
+    Enter Number: 
+    <input type="number" name="score" required>
+    <input type="submit" value="Get Grade">
+</form>
+
+<?php
+if ($result !== "") {
+    echo "The grade is: " . $result;
+}
+?>
+
+</body>
+</html>
